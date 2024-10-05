@@ -1,0 +1,15 @@
+.array-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+    
+}
+
+.array-bar{
+  width: 2px;
+  display: inline-block;
+  margin: 0 1px;
+  background-color: turquoise;
+
+}
