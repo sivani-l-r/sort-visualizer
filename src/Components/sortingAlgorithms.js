@@ -1,3 +1,31 @@
+// QUICK SORT
+
+export function getBubbleSortAnimation(array) {
+  const animations = [];
+  if(array.length <= 1) return array;
+  const auxiliaryArray = array.slice();
+  bubbleSortHelper(array,auxiliaryArray,animations);
+  return animations;
+}
+function bubbleSortHelper(array, auxiliaryArray, animations) {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = 0; j < array.length - i - 1; j++) {
+      animations.push([j, j + 1, "compare"]);
+      if (auxiliaryArray[j] > auxiliaryArray[j + 1]) {
+        animations.push([j, auxiliaryArray[j + 1], "swap"]);  
+        animations.push([j + 1, auxiliaryArray[j], "swap"]); 
+        let temp = auxiliaryArray[j];
+        auxiliaryArray[j] = auxiliaryArray[j + 1];
+        auxiliaryArray[j + 1] = temp;
+      }
+      animations.push([j, j + 1, "revert"]);  
+    }
+  }
+}
+
+
+
+// MERGE SORT
 export function getMergeSortAnimation(array) {
     const animations = [];
     if (array.length <= 1) return array;
