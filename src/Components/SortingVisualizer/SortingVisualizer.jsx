@@ -32,7 +32,7 @@ export default class SortingVisualizer extends Component {
     const array = [];
     for(let i=0;i<ARRAY_LEN;i++)
     {
-        array.push(generateRandomInt(5,700));
+        array.push(generateRandomInt(5,600));
     }
     this.setState({array});
   }
@@ -148,9 +148,12 @@ quickSort() {
     const { array, isSorting } = this.state;
     return (
         <>
-           <button onClick={() => this.mergeSort()} disabled={isSorting}>Merge Sort</button>
-            <button onClick={() => this.bubbleSort()} disabled={isSorting}>Bubble Sort</button>
-            <button onClick={() => this.quickSort()} disabled={isSorting}>Quick Sort</button>
+          <div className='sort-buttons-section'>
+            <button className='sort-button' onClick={() => this.mergeSort()} disabled={isSorting}>Merge Sort</button>
+            <button className='sort-button' onClick={() => this.bubbleSort()} disabled={isSorting}>Bubble Sort</button>
+            <button className='sort-button' onClick={() => this.quickSort()} disabled={isSorting}>Quick Sort</button>
+          </div>
+            
             
             <div className='array-container'>
             {array.map((value,idx) => (
@@ -165,7 +168,9 @@ quickSort() {
                 </div>
             ))}
             </div>
-            <button onClick={() => this.resetArray()} disabled={isSorting}>Generate New Array</button>
+            <button className ='generate-button' onClick={() => this.resetArray()} disabled={isSorting}>Generate New Array</button>
+            <br></br>
+            <text>developed by <a href='https://sivani-l-r.github.io/portfolio/'>sivani</a> ☼ </text>
       </>
       
     );
