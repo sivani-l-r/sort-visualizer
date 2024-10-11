@@ -8,7 +8,7 @@ This tool helps users understand the inner workings of each sorting algorithm th
 
 You can view the live demo of the Sorting Visualizer at the following link:
 
-[View Sorting Visualizer](https://yourwebsite.com)
+[View Sorting Visualizer](https://sivani-l-r.github.io/sort-visualizer/)
 
 
 
