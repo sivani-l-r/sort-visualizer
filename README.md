@@ -15,11 +15,7 @@ You can view the live demo of the Sorting Visualizer at the following link:
 - **Quick Sort**
 - **Bubble Sort**
 
-## Technologies Used
 
-- **React**: Core framework for building the user interface.
-- **CSS**: For styling the array bars and handling transitions and animations.
-- **JavaScript**: Implementations of sorting algorithms (Merge Sort, Quick Sort, Bubble Sort).
 
 
 
