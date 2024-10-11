@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Sorting Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a **Sorting Visualizer** built using React that allows users to visualize popular sorting algorithms. Users can choose between **Merge Sort**, **Quick Sort**, and **Bubble Sort** to observe how these algorithms sort an array of numbers step by step. The sorting process is visually represented by bars of different heights, which change color and adjust dynamically as the algorithms compare, swap, and arrange the numbers.
 
-## Available Scripts
+This tool helps users understand the inner workings of each sorting algorithm through animated visual feedback. While sorting is in progress, the user interface disables all buttons to prevent interference with the sorting process, ensuring a smooth and clear visualization experience.
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+You can view the live demo of the Sorting Visualizer at the following link:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[View Sorting Visualizer](https://yourwebsite.com)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- **Visual Representation of Sorting Algorithms**: The height of each bar corresponds to the value of an element in the array. As sorting occurs, the bars change color and height to reflect comparisons and swaps.
+  
+- **Interactive UI**: Users can generate a new array, control the speed of the animations, and choose different sorting algorithms from the interface.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Algorithms Supported**:
+  - **Merge Sort**
+  - **Quick Sort**
+  - **Bubble Sort**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Responsive Design**: The UI is responsive and adapts to different screen sizes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Disable Buttons During Sorting**: Buttons like "Generate New Array" and algorithm selection buttons are disabled during sorting to avoid disruption.
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React**: Core framework for building the user interface.
+- **CSS**: For styling the array bars and handling transitions and animations.
+- **JavaScript**: Implementations of sorting algorithms (Merge Sort, Quick Sort, Bubble Sort).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
