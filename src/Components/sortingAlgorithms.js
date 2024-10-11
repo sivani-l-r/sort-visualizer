@@ -1,4 +1,49 @@
-// QUICK SORT
+// Quick Sort
+export function getQuickSortAnimation(array) {
+  const animations = [];
+  if (array.length <= 1) return array;
+  quickSortHelper(array, animations, 0, array.length - 1);
+  return animations;
+}
+
+function quickSortHelper(array, animations, low, high) {
+  if (low < high) {
+      let pivotIdx = partition(array, low, high, animations);
+      quickSortHelper(array, animations, low, pivotIdx - 1);
+      quickSortHelper(array, animations, pivotIdx + 1, high);
+  }
+}
+
+function partition(array, low, high, animations) {
+  let pivot = array[high];
+  let i = low - 1;
+
+  for (let j = low; j < high; j++) {
+      animations.push([j, high, 'compare']); 
+      if (array[j] < pivot) {
+          i++;
+          animations.push([i, j, 'swap']); 
+          swap(array, i, j);
+      }
+      animations.push([j, high, 'revert']); 
+  }
+
+
+  swap(array, i + 1, high);
+  animations.push([i + 1, high, 'swap']); 
+  return i + 1;
+}
+
+function swap(arr, i, j) {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+
+
+
+// Bubble Sort
 
 export function getBubbleSortAnimation(array) {
   const animations = [];

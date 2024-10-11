@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './SortingVisualizer.css';
-import { getMergeSortAnimation, getBubbleSortAnimation } from '../sortingAlgorithms';
+import { getMergeSortAnimation, getBubbleSortAnimation, getQuickSortAnimation } from '../sortingAlgorithms';
 
 const ARRAY_LEN = 300;
 const ANIMATION_SPEED_MS = 1;
@@ -19,6 +19,7 @@ export default class SortingVisualizer extends Component {
     this.state = 
     {
         array: [],
+        isSorting: false,
     };
   }
 
@@ -35,8 +36,9 @@ export default class SortingVisualizer extends Component {
     }
     this.setState({array});
   }
-
   mergeSort() {
+    this.setState({ isSorting: true });
+
     const animations = getMergeSortAnimation(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
@@ -53,18 +55,24 @@ export default class SortingVisualizer extends Component {
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;          
+          const barOneStyle = arrayBars[barOneIdx].style;  
+          barOneStyle.height = `${newHeight}px`; 
         }, i * ANIMATION_SPEED_MS);
       }
     }
-  }
-  bubbleSort() {
+
+    setTimeout(() => {
+      this.setState({ isSorting: false });
+    }, animations.length * ANIMATION_SPEED_MS);
+}
+
+bubbleSort() {
+    this.setState({ isSorting: true });
+
     const animations = getBubbleSortAnimation(this.state.array);
     const arrayBars = document.getElementsByClassName('array-bar');
-  
     for (let i = 0; i < animations.length; i++) {
       const [barOneIdx, barTwoIdxOrHeight, action] = animations[i];
-  
       if (action === "compare" || action === "revert") {
         const color = action === "compare" ? SECONDARY_COLOR : PRIMARY_COLOR;
         if (arrayBars[barOneIdx] && arrayBars[barTwoIdxOrHeight]) {
@@ -84,18 +92,66 @@ export default class SortingVisualizer extends Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
-  }
-  
-  
+
+
+    setTimeout(() => {
+      this.setState({ isSorting: false });
+    }, animations.length * ANIMATION_SPEED_MS);
+}
+
+quickSort() {
+    this.setState({ isSorting: true });
+
+    const animations = getQuickSortAnimation(this.state.array);
+    const arrayBars = document.getElementsByClassName('array-bar');
+    for (let i = 0; i < animations.length; i++) {
+        const [barOneIdx, barTwoIdxOrHeight, action] = animations[i];
+
+        if (action === "compare" || action === "revert") {
+            const color = action === "compare" ? SECONDARY_COLOR : PRIMARY_COLOR;
+            if (arrayBars[barOneIdx] && arrayBars[barTwoIdxOrHeight]) {
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdxOrHeight].style;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * ANIMATION_SPEED_MS);
+            }
+        } else if (action === "swap") {
+            setTimeout(() => {
+                if (arrayBars[barOneIdx] && arrayBars[barTwoIdxOrHeight]) {
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    const barTwoStyle = arrayBars[barTwoIdxOrHeight].style;
+
+
+                    const tempHeight = barOneStyle.height;
+                    barOneStyle.height = barTwoStyle.height;
+                    barTwoStyle.height = tempHeight;
+                }
+            }, i * ANIMATION_SPEED_MS);
+        }
+    }
+
+
+    setTimeout(() => {
+        for (let j = 0; j < arrayBars.length; j++) {
+            arrayBars[j].style.backgroundColor = PRIMARY_COLOR; 
+            arrayBars[j].style.height = `${this.state.array[j]}px`; 
+        }
+        this.setState({ isSorting: false });
+    }, animations.length * ANIMATION_SPEED_MS);
+}
 
   
   render() {
 
-    const {array} = this.state;
+    const { array, isSorting } = this.state;
     return (
         <>
-            <button onClick={() => this.mergeSort()}>Merge Sort</button>
-            <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+           <button onClick={() => this.mergeSort()} disabled={isSorting}>Merge Sort</button>
+            <button onClick={() => this.bubbleSort()} disabled={isSorting}>Bubble Sort</button>
+            <button onClick={() => this.quickSort()} disabled={isSorting}>Quick Sort</button>
+            
             <div className='array-container'>
             {array.map((value,idx) => (
                 <div
@@ -105,10 +161,11 @@ export default class SortingVisualizer extends Component {
                   backgroundColor: PRIMARY_COLOR,
                   height: `${value}px`,
                 }}>
+
                 </div>
             ))}
             </div>
-            <button onClick={() => this.resetArray()}>Generate New Array</button>
+            <button onClick={() => this.resetArray()} disabled={isSorting}>Generate New Array</button>
       </>
       
     );
