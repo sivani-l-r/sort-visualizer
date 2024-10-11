@@ -10,22 +10,10 @@ You can view the live demo of the Sorting Visualizer at the following link:
 
 [View Sorting Visualizer](https://sivani-l-r.github.io/sort-visualizer/)
 
-
-
-## Features
-
-- **Visual Representation of Sorting Algorithms**: The height of each bar corresponds to the value of an element in the array. As sorting occurs, the bars change color and height to reflect comparisons and swaps.
-  
-- **Interactive UI**: Users can generate a new array, control the speed of the animations, and choose different sorting algorithms from the interface.
-
-- **Algorithms Supported**:
-  - **Merge Sort**
-  - **Quick Sort**
-  - **Bubble Sort**
-
-- **Responsive Design**: The UI is responsive and adapts to different screen sizes.
-
-- **Disable Buttons During Sorting**: Buttons like "Generate New Array" and algorithm selection buttons are disabled during sorting to avoid disruption.
+## Algorithms Supported
+- **Merge Sort**
+- **Quick Sort**
+- **Bubble Sort**
 
 ## Technologies Used
 
